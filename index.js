@@ -25,7 +25,7 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
     const { stdout, stderr } = await exec(`rm -rf $${toolsEnv}`);
     if (stdout) console.log(stdout);
     if (stderr) console.error(stderr);
-    console.warn(`Removed directory from ${toolsEnv} env`);
+    console.warn(`Removed tools directory using ${toolsEnv} env`);
 }
 
 async function removeAll() {
