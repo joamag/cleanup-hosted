@@ -397,17 +397,31 @@ module.exports = require("os");
 /***/ 104:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+const util = __webpack_require__(669);
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 
-try {
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
-} catch (error) {
-    core.setFailed(error.message);
+const exec = util.promisify(__webpack_require__(129).exec);
+
+async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
+    const { stdout, stderr } = await exec(`rm -rf $${AGENT_TOOLSDIRECTORY}`);
+    console.log(stdout);
+    console.error(stderr);
 }
+
+async function action() {
+    try {
+        await removeTools();
+        const time = (new Date()).toTimeString();
+        core.setOutput("time", time);
+        const payload = JSON.stringify(github.context.payload, undefined, 2)
+        console.log(`The event payload: ${payload}`);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
+}
+
+action();
 
 
 /***/ }),
