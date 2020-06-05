@@ -1,22 +1,28 @@
 const util = require("util");
 const core = require("@actions/core");
-const github = require("@actions/github");
 
 const exec = util.promisify(require("child_process").exec);
 
+async function removeTemp(tempPath = "/tmp") {
+    const { stdout, stderr } = await exec(`rm -rf ${tempPath}`);
+    if (stdout) console.log(stdout);
+    if (stderr) console.error(stderr);
+}
+
 async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
     const { stdout, stderr } = await exec(`rm -rf $${toolsEnv}`);
-    console.log(stdout);
-    console.error(stderr);
+    if (stdout) console.log(stdout);
+    if (stderr) console.error(stderr);
+}
+
+async function removeAll() {
+    await removeTemp();
+    await removeTools();
 }
 
 async function action() {
     try {
-        await removeTools();
-        const time = (new Date()).toTimeString();
-        core.setOutput("time", time);
-        const payload = JSON.stringify(github.context.payload, undefined, 2)
-        console.log(`The event payload: ${payload}`);
+        await removeAll();
     } catch (error) {
         core.setFailed(error.message);
     }
