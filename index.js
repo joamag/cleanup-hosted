@@ -22,8 +22,8 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
 }
 
 async function removeAll() {
-    await removeTemp();
-    await removeTools();
+    if (core.getInput("remove-temp") === "true") await removeTemp();
+    if (core.getInput("remove-tools") === "true") await removeTools();
 }
 
 async function action() {

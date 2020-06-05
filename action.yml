@@ -1,8 +1,14 @@
 name: "joamag/cleanup-hosted"
 description: "Cleanups an hosted GitHub Runner environment"
-outputs:
-  time:
-    description: "The time we greeted you"
+inputs:
+  remove-temp:
+    description: "Should remove temporary directories"
+    required: false
+    default: "false"
+  remove-tools:
+    description: "Should remove tools directories"
+    required: false
+    default: "true"
 runs:
   using: "node12"
   main: "dist/index.js"
