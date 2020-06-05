@@ -1,6 +1,6 @@
 {
     "name": "@joamag/cleanup-hosted",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Cleanups an hosted GitHub Runner environment",
     "repository": {
         "type": "git",
