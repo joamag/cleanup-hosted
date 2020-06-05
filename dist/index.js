@@ -86,8 +86,8 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
     if (process.env[toolsEnv] === undefined) {
         console.warn(`Skipping tools removal, ${toolsEnv} env does not exist`);
     }
-    await runCmd(`rm -rf ${toolsEnv}`);
-    console.warn(`Removed tools directory using ${toolsEnv} env`);
+    await runCmd(`rm -rf $${toolsEnv}`);
+    console.warn(`Removed tools directory using $${toolsEnv} (${process.env[toolsEnv]})`);
 }
 
 async function removeAll() {
