@@ -1,0 +1,13 @@
+{
+    "name": "@joamag/cleanup-hosted",
+    "description": "Cleanups an hosted GitHub Runner environment",
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.stage.hive.pt/joamag/cleanup-hosted.git"
+    },
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@actions/core": "^1.2.4",
+        "@actions/github": "^3.0.0"
+    }
+}
