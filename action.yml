@@ -1,0 +1,8 @@
+name: "joamag/cleanup-hosted"
+description: "Cleanups an hosted GitHub Runner environment"
+outputs:
+  time:
+    description: "The time we greeted you"
+runs:
+  using: "node12"
+  main: "index.js"
