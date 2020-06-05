@@ -5,7 +5,7 @@ const github = require("@actions/github");
 const exec = util.promisify(require("child_process").exec);
 
 async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
-    const { stdout, stderr } = await exec(`rm -rf $${AGENT_TOOLSDIRECTORY}`);
+    const { stdout, stderr } = await exec(`rm -rf $${toolsEnv}`);
     console.log(stdout);
     console.error(stderr);
 }

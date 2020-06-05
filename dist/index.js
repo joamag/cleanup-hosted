@@ -404,7 +404,7 @@ const github = __webpack_require__(469);
 const exec = util.promisify(__webpack_require__(129).exec);
 
 async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
-    const { stdout, stderr } = await exec(`rm -rf $${AGENT_TOOLSDIRECTORY}`);
+    const { stdout, stderr } = await exec(`rm -rf $${toolsEnv}`);
     console.log(stdout);
     console.error(stderr);
 }
