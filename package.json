@@ -8,13 +8,15 @@
     },
     "license": "Apache-2.0",
     "scripts": {
-        "build": "ncc build index.js -o dist"
+        "build": "ncc build index.js -o dist",
+        "watch": "nodemon --ignore /dist/*.js --exec npm run build"
     },
     "dependencies": {
         "@actions/core": "^1.2.4",
         "@actions/github": "^3.0.0"
     },
     "devDependencies": {
-        "@zeit/ncc": "^0.22.3"
+        "@zeit/ncc": "^0.22.3",
+        "nodemon": "^2.0.4"
     }
 }
