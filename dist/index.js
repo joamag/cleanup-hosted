@@ -69,7 +69,7 @@ async function runCmd(cmd) {
     const { err, stdout, stderr } = await exec(cmd);
     if (stdout) console.log(stdout);
     if (stderr) console.error(stderr);
-    console.log(err);
+    if (err) console.error(`There was an error: ${err}`);
 }
 
 async function removeTemp(tempPath = "/tmp") {
@@ -77,7 +77,7 @@ async function removeTemp(tempPath = "/tmp") {
     console.warn(`Removed ${tempPath} directory`);
 }
 
-async function removeHomeCache(homeCachePath = "~/cache") {
+async function removeHomeCache(homeCachePath = "~/.cache") {
     await runCmd(`rm -rf ${homeCachePath}`);
     console.warn(`Removed ${homeCachePath} directory`);
 }
