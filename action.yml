@@ -5,6 +5,10 @@ inputs:
     description: "Should remove temporary directories"
     required: false
     default: "false"
+  remove-home-cache:
+    description: "Should remove home cache directories"
+    required: false
+    default: "true"
   remove-tools:
     description: "Should remove tools directories"
     required: false

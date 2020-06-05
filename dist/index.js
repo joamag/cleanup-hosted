@@ -72,6 +72,13 @@ async function removeTemp(tempPath = "/tmp") {
     console.warn(`Removed ${tempPath} directory`);
 }
 
+async function removeHomeCache(homeCachePath = "~/cache") {
+    const { stdout, stderr } = await exec(`rm -rf ${homeCachePath}`);
+    if (stdout) console.log(stdout);
+    if (stderr) console.error(stderr);
+    console.warn(`Removed ${homeCachePath} directory`);
+}
+
 async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
     if (process.env[toolsEnv] === undefined) {
         console.warn(`Skipping tools removal, ${toolsEnv} env does not exist`);
@@ -84,6 +91,7 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
 
 async function removeAll() {
     if (core.getInput("remove-temp") === "true") await removeTemp();
+    if (core.getInput("remove-home-cache") === "true") await removeHomeCache();
     if (core.getInput("remove-tools") === "true") await removeTools();
 }
 
