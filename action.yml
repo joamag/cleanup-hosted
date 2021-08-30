@@ -9,6 +9,10 @@ inputs:
     description: "Should remove home cache directories"
     required: false
     default: "true"
+  remove-home-colony:
+    description: "Should remove home colony directories"
+    required: false
+    default: "true"
   remove-tools:
     description: "Should remove tools directories"
     required: false
