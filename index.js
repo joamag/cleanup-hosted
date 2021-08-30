@@ -21,6 +21,11 @@ async function removeHomeCache(homeCachePath = "~/.cache") {
     console.warn(`Removed ${homeCachePath} directory`);
 }
 
+async function removeHomeColony(homeColonyPath = "~/.colony") {
+    await runCmd(`rm -rf ${homeColonyPath}`);
+    console.warn(`Removed ${homeColonyPath} directory`);
+}
+
 async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
     if (process.env[toolsEnv] === undefined) {
         console.warn(`Skipping tools removal, ${toolsEnv} env does not exist`);
@@ -32,6 +37,7 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY") {
 async function removeAll() {
     if (core.getInput("remove-temp") === "true") await removeTemp();
     if (core.getInput("remove-home-cache") === "true") await removeHomeCache();
+    if (core.getInput("remove-home-colony") === "true") await removeHomeColony();
     if (core.getInput("remove-tools") === "true") await removeTools();
 }
 
