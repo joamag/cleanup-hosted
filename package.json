@@ -12,11 +12,11 @@
         "watch": "nodemon --ignore /dist/*.js --exec npm run build"
     },
     "dependencies": {
-        "@actions/core": "^1.5.0",
-        "@actions/github": "^5.0.0"
+        "@actions/core": "^1.10.0",
+        "@actions/github": "^5.1.1"
     },
     "devDependencies": {
         "@zeit/ncc": "^0.22.3",
-        "nodemon": "^2.0.12"
+        "nodemon": "^2.0.20"
     }
 }
