@@ -13,11 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Bumped Node.js version to 20
+*
 
 ### Fixed
 
 *
+
+## [0.3.0] - 2024-02-24
+
+### Changed
+
+* Bumped Node.js version to 20
 
 ## [0.2.0] - 2021-08-30
 
