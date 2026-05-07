@@ -15,6 +15,6 @@ jobs:
       - name: Print Node.js information
         run: node --version
       - name: Install package
-        run: npm ci
+        run: npm install
       - name: Run unit tests
         run: npm test
