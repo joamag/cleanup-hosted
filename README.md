@@ -9,6 +9,12 @@ npm install
 npm run build
 ```
 
+## Test
+
+```bash
+npm test
+```
+
 ## Usage
 
 ```yaml

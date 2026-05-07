@@ -1,6 +1,6 @@
 {
     "name": "@joamag/cleanup-hosted",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Cleanups an hosted GitHub Runner environment",
     "repository": {
         "type": "git",
@@ -9,14 +9,14 @@
     "license": "Apache-2.0",
     "scripts": {
         "build": "ncc build index.js -o dist",
-        "watch": "nodemon --ignore /dist/*.js --exec npm run build"
+        "watch": "nodemon --ignore /dist/*.js --exec npm run build",
+        "test": "node --test \"test/**/*.test.js\""
     },
     "dependencies": {
-        "@actions/core": "^1.10.1",
-        "@actions/github": "^6.0.0"
+        "@actions/core": "^1.11.1"
     },
     "devDependencies": {
-        "@vercel/ncc": "^0.38.1",
-        "nodemon": "^3.1.0"
+        "@vercel/ncc": "^0.38.4",
+        "nodemon": "^3.1.14"
     }
 }
