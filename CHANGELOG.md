@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Unit tests using `node:test`
 * Module exports for `index.js` to enable testing
+* Support for the removal of stale git lock files of the workspace (eg: of submodules), left by interrupted jobs
 
 ### Changed
 
