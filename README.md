@@ -24,4 +24,5 @@ npm test
     remove-home-cache: true
     remove-home-colony: true
     remove-tools: true
+    remove-git-locks: true
 ```

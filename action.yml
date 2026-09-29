@@ -17,6 +17,10 @@ inputs:
     description: "Should remove tools directories"
     required: false
     default: "true"
+  remove-git-locks:
+    description: "Should remove stale git lock files of the workspace"
+    required: false
+    default: "true"
 runs:
   using: "node24"
   main: "dist/index.js"

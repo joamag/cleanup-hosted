@@ -7,6 +7,7 @@
 const util = __nccwpck_require__(9023);
 const process = __nccwpck_require__(932);
 const childProcess = __nccwpck_require__(5317);
+const fs = __nccwpck_require__(9896);
 const core = __nccwpck_require__(7484);
 
 const execAsync = util.promisify(childProcess.exec);
@@ -47,11 +48,26 @@ async function removeTools(toolsEnv = "AGENT_TOOLSDIRECTORY", exec = execAsync) 
     console.warn(`Removed tools directory using $${toolsEnv} (${toolsPath})`);
 }
 
+async function removeGitLocks(workspaceEnv = "GITHUB_WORKSPACE", exec = execAsync) {
+    const workspacePath = process.env[workspaceEnv];
+    if (workspacePath === undefined) {
+        console.warn(`Skipping git locks removal, ${workspaceEnv} env does not exist`);
+        return;
+    }
+    if (!fs.existsSync(workspacePath)) {
+        console.warn(`Skipping git locks removal, ${workspacePath} does not exist`);
+        return;
+    }
+    await runCmd(`find "${workspacePath}" -path "*/.git/*" -name "*.lock" -type f -delete`, exec);
+    console.warn(`Removed git locks using $${workspaceEnv} (${workspacePath})`);
+}
+
 async function removeAll(getInput = core.getInput, exec = execAsync) {
     if (getInput("remove-temp") === "true") await removeTemp(undefined, exec);
     if (getInput("remove-home-cache") === "true") await removeHomeCache(undefined, exec);
     if (getInput("remove-home-colony") === "true") await removeHomeColony(undefined, exec);
     if (getInput("remove-tools") === "true") await removeTools(undefined, exec);
+    if (getInput("remove-git-locks") === "true") await removeGitLocks(undefined, exec);
 }
 
 async function action() {
@@ -72,6 +88,7 @@ module.exports = {
     removeHomeCache,
     removeHomeColony,
     removeTools,
+    removeGitLocks,
     removeAll,
     action
 };
