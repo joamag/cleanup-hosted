@@ -2,9 +2,12 @@ name: Test Workflow
 on: [push]
 jobs:
   test:
-    name: Test
+    name: Test (${{ matrix.os }})
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code from repository
         uses: actions/checkout@v6
@@ -18,3 +21,7 @@ jobs:
         run: npm install
       - name: Run unit tests
         run: npm test
+      - name: Run the action
+        uses: ./
+        with:
+          remove-tools: false

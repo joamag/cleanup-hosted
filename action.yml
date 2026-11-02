@@ -21,6 +21,10 @@ inputs:
     description: "Should remove stale git lock files of the workspace"
     required: false
     default: "true"
+  recover-package-manager:
+    description: "Should recover the package manager of the runner from an interrupted operation (eg: dpkg on Debian based systems)"
+    required: false
+    default: "true"
 runs:
   using: "node24"
   main: "dist/index.js"
